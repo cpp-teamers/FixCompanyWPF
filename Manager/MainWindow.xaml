@@ -6,7 +6,26 @@
         xmlns:local="clr-namespace:Manager"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="SelectedIndex" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="10,0"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <TextBlock Text="Sort By:" FontSize="14" FontWeight="SemiBold" Foreground="#B7B5B8" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <!--<ComboBox Grid.Column="1" Style="{DynamicResource ComboBoxStyle1}"/>
+        -->
     </Grid>
 </Window>
