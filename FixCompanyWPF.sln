@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityLibrary", "EntityLibrary\EntityLibrary.csproj", "{1CB6E185-AAB8-4FA5-B3C9-D0D4DC5808DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD5Library", "MD5\MD5Library.csproj", "{0975C1B6-045D-40F4-A38E-B05002270C52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{1CB6E185-AAB8-4FA5-B3C9-D0D4DC5808DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB6E185-AAB8-4FA5-B3C9-D0D4DC5808DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB6E185-AAB8-4FA5-B3C9-D0D4DC5808DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0975C1B6-045D-40F4-A38E-B05002270C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0975C1B6-045D-40F4-A38E-B05002270C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0975C1B6-045D-40F4-A38E-B05002270C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0975C1B6-045D-40F4-A38E-B05002270C52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
