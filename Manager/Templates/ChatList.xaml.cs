@@ -13,24 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Manager
+namespace Manager.Templates
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for ChatList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ChatList : UserControl
     {
-        public MainWindow()
+        public ChatList()
         {
             InitializeComponent();
-        }
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
-        private void close_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+           // DataContext = new ViewModel();
         }
     }
 }

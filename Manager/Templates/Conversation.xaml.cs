@@ -13,24 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Manager
+namespace FixCompanyWPF.Templates
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for Conversation.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Conversation : UserControl
     {
-        public MainWindow()
+        public Conversation()
         {
             InitializeComponent();
-        }
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
-        private void close_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+           // DataContext = new ViewModel();
         }
     }
 }
