@@ -135,6 +135,9 @@
     <Resource Include="Images\close.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\home.png" />
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +162,7 @@
     <Resource Include="Images\send.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Themes\" />
+    <Resource Include="Images\cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />
