@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EntityLibrary
+namespace EntityLibrary.Models
 {
 	[Table("SolvedProblemTypes")]
     public class SolvedProblemType

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EntityLibrary
+namespace EntityLibrary.Models
 {
 	[Table("Accounts")]
     public class Account
@@ -17,7 +17,7 @@ namespace EntityLibrary
         [StringLength(50)]
         public string Password { get; set; }
 
-        [ForeignKey(nameof(EntityLibrary.Role))]
+        [ForeignKey(nameof(EntityLibrary.Models.Role))]
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
     }

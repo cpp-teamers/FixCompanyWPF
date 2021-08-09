@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EntityLibrary
+namespace EntityLibrary.Models
 {
 	[Table("Orders")]
     public class Order
@@ -27,7 +27,7 @@ namespace EntityLibrary
         [Column(TypeName = "datetime")]
         public DateTime Deadline { get; set; }
 
-        [ForeignKey(nameof(EntityLibrary.ReadynessStatus))]
+        [ForeignKey(nameof(EntityLibrary.Models.ReadynessStatus))]
         public int StatusId { get; set; }
         public ReadynessStatus ReadynessStatus { get; set; }
 
