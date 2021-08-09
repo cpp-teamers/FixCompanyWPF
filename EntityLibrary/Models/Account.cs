@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityLibrary
 {
-    [Table("Accounts")]
-	public class Account
-	{
+	[Table("Accounts")]
+    public class Account
+    {
         [Key]
         public int Id { get; set; }
 
