@@ -38,18 +38,27 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Image Margin="15,5,15,5" Stretch="Uniform" Source="Images/defaultImage.jpg" Name="imgManager"
-                               MaxHeight="65" MaxWidth="65"/>
-                <Button Height="70" Background="#2a2e4d" Padding="5" Grid.Row="1" Margin="5,0">
+                <GroupBox Padding="0" BorderThickness="2">
+                    <Button Margin="5,0" MaxHeight="80" MinHeight="80" Background="Transparent" BorderThickness="0">
+                        <Image Stretch="Uniform" Source="Images/defaultImage.jpg" Name="imgManager"/>
+                    </Button>
+                </GroupBox>
+                <Button Height="70" Background="#2a2e4d" Padding="0" Grid.Row="1" Margin="5,0" BorderThickness="0">
                     <Image Source="Images/home.png"/>
                 </Button>
-                <Button Height="70" Background="#2a2e4d" Padding="5" Margin="5,0" Grid.Row="2">
+                <Button Height="70" Background="#2a2e4d" Padding="0" Margin="5,0" Grid.Row="2" BorderThickness="0">
                     <Image Source="Images/groupChat.png"/>
                 </Button>
-                <Button Height="60" Background="#2a2e4d" Padding="5" Margin="5,0" Grid.Row="8">
+                <Button Height="60" Background="#2a2e4d" Padding="4" Margin="5,0" Grid.Row="8" BorderThickness="0">
                     <Image Source="Images/logout-256.png"/>
                 </Button>
             </Grid>
+            <DockPanel Grid.Column="1" Grid.Row="0">
+                <TextBox x:Name="searchTextBox" Width="350" Margin="30, 25, 10, 25" FontSize="20"></TextBox>
+                <Button x:Name="searchContact" DockPanel.Dock="Left" Background="Transparent" BorderThickness="1" Width="50" Height="36" Padding="2">
+                    <Image Source="Images\search-icon.png"/>
+                </Button>
+            </DockPanel>
             <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
             <DockPanel Grid.Row="0" Grid.Column="2">
                 <Button x:Name="close" Height="50" Width="50" Margin="0, 15, 15, 0" HorizontalAlignment="Right" VerticalAlignment="Top"
@@ -57,8 +66,9 @@
                     <Image Source="Images/close.png"/>
                 </Button>
             </DockPanel>
-            <DockPanel Grid.Column="2" Grid.Row="1">
-                <Border
+            <Border Grid.Column="2" Grid.Row="1" Background="FloralWhite" BorderThickness="4" BorderBrush="#2a2e4d">
+                <DockPanel>
+                    <Border
                     Background="#3a2e5d"
                     CornerRadius="10" DockPanel.Dock="Bottom" Margin="10, 0, 10, 10">
                     <DockPanel Height="60">
@@ -69,7 +79,7 @@
                                         <ControlTemplate TargetType="{x:Type TextBox}">
                                             <Border CornerRadius="10"
                                                 Background="#293550"
-                                                Width="650"
+                                                Width="640"
                                                 Height="40"
                                                 Margin="5, 10, 5, 10">
                                                 <Grid>
@@ -101,6 +111,7 @@
                 </Border>
                 <Templates:Conversation Margin="10"/>
             </DockPanel>
+            </Border>
         </Grid>
     </Border>
 </Window>
