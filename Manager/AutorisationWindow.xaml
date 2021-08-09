@@ -16,13 +16,13 @@
     <Grid>
         <Rectangle Height="280" VerticalAlignment="Top">
             <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5 0">
                     <GradientStop Color="#2a2e4d"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,80" RadiusY="10" RadiusX="10" Fill="white">
+        <Rectangle Width="280" Height="240" VerticalAlignment="Bottom" Margin="0 80" RadiusY="10" RadiusX="10" Fill="white">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Gray"/>
             </Rectangle.Effect>
