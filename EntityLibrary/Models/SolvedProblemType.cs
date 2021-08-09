@@ -12,7 +12,7 @@ namespace EntityLibrary.Models
 
         [Required]
         [StringLength(50)]
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         //
         public virtual IEnumerable<Order> Orders { get; set; }

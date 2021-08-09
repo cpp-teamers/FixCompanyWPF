@@ -27,17 +27,17 @@ namespace EntityLibrary.Models
         [Column(TypeName = "datetime")]
         public DateTime Deadline { get; set; }
 
-        [ForeignKey(nameof(EntityLibrary.Models.ReadynessStatus))]
+        [ForeignKey("ReadynessStatus")]
         public int StatusId { get; set; }
-        public ReadynessStatus ReadynessStatus { get; set; }
+        public virtual ReadynessStatus ReadynessStatus { get; set; }
 
-        [ForeignKey(nameof(Account))]
-        public int OwnerAccountId { get; set; }
-        public Account OwnerAccount { get; set; }
+        [ForeignKey("Account")]
+        public int OwnAccountId { get; set; }
 
-        [ForeignKey(nameof(Account))]
-        public int EmployeeAccountId { get; set; }
-        public Account EmployeeAccount { get; set; }
+        [ForeignKey("Account")]
+        public int EmpAccountId { get; set; }
+        
+        public virtual Account Account { get; set; }
 
         [Required]
         [Column(TypeName = "money")]
