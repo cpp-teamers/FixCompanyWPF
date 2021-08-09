@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityLibrary
 {
-    [Table("Orders")]
+	[Table("Orders")]
     public class Order
     {
         [Key]
@@ -51,8 +51,8 @@ namespace EntityLibrary
         public virtual IEnumerable<SolvedProblemType> SolvedProblemTypes { get; set; }
 
         public Order()
-		{
+        {
             CreationDate = DateTime.Now;
-		}
+        }
     }
 }
