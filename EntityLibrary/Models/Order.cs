@@ -41,7 +41,7 @@ namespace EntityLibrary.Models
 
         [Required]
         [Column(TypeName = "money")]
-        public decimal Pirce { get; set; }
+        public decimal Price { get; set; }
 
         [Required]
         [StringLength(250)]
