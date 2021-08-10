@@ -22,6 +22,7 @@ namespace EntityLibrary.Models
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
 
-        public virtual IEnumerable<Order> Orders { get; set; }
-    }
+		public ICollection<Order> EmployeeAccountOrders { get; set; }
+		public ICollection<Order> OwnerAccountOrders { get; set; }
+	}
 }

@@ -31,13 +31,11 @@ namespace EntityLibrary.Models
         public int StatusId { get; set; }
         public virtual ReadynessStatus ReadynessStatus { get; set; }
 
-        [ForeignKey("Account")]
-        public int OwnAccountId { get; set; }
+        public int OwnerAccountId { get; set; }
+        public virtual Account OwnerAccount { get; set; }
 
-        [ForeignKey("Account")]
-        public int EmpAccountId { get; set; }
-        
-        public virtual Account Account { get; set; }
+        public int EmployeeAccountId { get; set; }
+        public virtual Account EmployeeAccount { get; set; }
 
         [Required]
         [Column(TypeName = "money")]
