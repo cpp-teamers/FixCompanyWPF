@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityLibrary.Models
@@ -17,8 +18,11 @@ namespace EntityLibrary.Models
         [StringLength(50)]
         public string Password { get; set; }
 
-        [ForeignKey(nameof(EntityLibrary.Models.Role))]
+        [ForeignKey("Role")]
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
-    }
+
+		public ICollection<Order> EmployeeAccountOrders { get; set; }
+		public ICollection<Order> OwnerAccountOrders { get; set; }
+	}
 }
