@@ -17,13 +17,15 @@ using Manager.ViewModel;
 namespace Manager.Templates
 {
     /// <summary>
-    /// Interaction logic for ChatList.xaml
+    /// Interaction logic for MenuListControl.xaml
     /// </summary>
-    public partial class ChatList : UserControl
+    public partial class MenuListControl : UserControl
     {
-        public ChatList()
+        public MenuListControl()
         {
             InitializeComponent();
+
+            //We are going to bind our Menu Items to the CustomList now
             DataContext = new ConversationMessagesViewModel();
         }
     }

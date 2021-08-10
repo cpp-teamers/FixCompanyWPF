@@ -30,7 +30,6 @@ namespace Server
                     while (true)
                     {
                         string request = "";
-
                         TcpClient acceptor = listener.AcceptTcpClient();
                         NetworkStream ns = acceptor.GetStream();
 
@@ -39,21 +38,6 @@ namespace Server
                         //---------------------------------------
                         request = sr.ReadLine();
                         //---------------------------------------
-                        //if (request == "students")
-                        //{
-                        //    List<SStudent> students = LoadStudentsList();
-                        //    bf.Serialize(ns, students);
-                        //}
-                        //if (request == "faculties")
-                        //{
-                        //    List<SFaculty> faculties = LoadFacultiesList();
-                        //    bf.Serialize(ns, faculties);
-                        //}
-                        //if (request == "groups")
-                        //{
-                        //    List<SGroup> groups = LoadGroupsList();
-                        //    bf.Serialize(ns, groups);
-                        //}
                         Console.WriteLine("\n==========-|Success|-===============\n");
                         sr.Close();
                         ns.Close();
