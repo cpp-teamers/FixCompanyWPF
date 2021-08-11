@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Manager.ViewModel;
 
 namespace Manager.Templates
 {
@@ -23,7 +24,7 @@ namespace Manager.Templates
         public ChatList()
         {
             InitializeComponent();
-           // DataContext = new ViewModel();
+            DataContext = new ConversationMessagesViewModel();
         }
     }
 }

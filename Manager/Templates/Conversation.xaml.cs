@@ -12,18 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Manager.ViewModel;
 
-namespace FixCompanyWPF.Templates
+namespace Manager.Templates
 {
-    /// <summary>
-    /// Interaction logic for Conversation.xaml
-    /// </summary>
     public partial class Conversation : UserControl
     {
         public Conversation()
         {
             InitializeComponent();
-           // DataContext = new ViewModel();
+            DataContext = new ConversationMessagesViewModel();
         }
     }
 }
