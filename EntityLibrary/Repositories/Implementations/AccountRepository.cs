@@ -10,9 +10,14 @@ using EntityLibrary.EF;
 
 namespace EntityLibrary.Repositories.Implementations
 {
-    class AccountRepository : IAccountRepository
+    public class AccountRepository : IAccountRepository
     {
-        private DataManager _dataManager = new DataManager();
+        private DataManager _dataManager;
+
+        public AccountRepository(DataManager dataManager)
+        {
+            _dataManager = dataManager;
+        }
         public void AddAccount(Account addedAccount)
         {
             _dataManager.Accounts.Add(addedAccount);

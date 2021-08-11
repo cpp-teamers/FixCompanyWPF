@@ -83,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SolvedProblemType.cs" />
     <Compile Include="Repositories\Implementations\AccountRepository.cs" />
+    <Compile Include="Repositories\Implementations\GeneralRepository.cs" />
     <Compile Include="Repositories\Implementations\OrderRepository.cs" />
     <Compile Include="Repositories\Implementations\RedynessStatusRepository.cs" />
     <Compile Include="Repositories\Implementations\RoleRepository.cs" />

@@ -10,7 +10,7 @@ using EntityLibrary.EF;
 
 namespace EntityLibrary.Repositories.Implementations
 {
-    class SolvedProblemTypeRepository : ISolvedProblemTypeRepository
+    public class SolvedProblemTypeRepository : ISolvedProblemTypeRepository
     {
 
         private DataManager _dataManager = new DataManager();
