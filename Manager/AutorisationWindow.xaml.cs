@@ -21,7 +21,8 @@ namespace Manager
 {
     public partial class AutorisationWindow : Window
     {
-        private readonly int ROLEID = 2; // Const of role manager
+        // Const number of role manager
+        private readonly int ROLEID = 3; 
 
         public AutorisationWindow()
         {
@@ -67,7 +68,7 @@ namespace Manager
 
         private SAccount Send(string sendMessage)
         {
-            int port = 10000;
+            int port = 745;
             IPAddress ip = IPAddress.Parse("127.0.0.1");
             IPEndPoint ep = new IPEndPoint(ip, port);
             TcpClient client = null;
@@ -77,10 +78,11 @@ namespace Manager
 
             try
             {
-                client = new TcpClient(ep);
+                client = new TcpClient();
+                client.Connect(ep);
                 bf = new BinaryFormatter();
                 stream = client.GetStream();
-                byte[] data = System.Text.Encoding.UTF8.GetBytes(sendMessage);
+                byte[] data = Encoding.UTF8.GetBytes(sendMessage);
                 stream.Write(data, 0, data.Length);
 
                 account = (SAccount)bf.Deserialize(stream);
@@ -97,6 +99,8 @@ namespace Manager
                 if (client != null)
                     client.Close();
             }
+
+            //
             return account;
         }
     }

@@ -10,7 +10,7 @@ using EntityLibrary.EF;
 
 namespace EntityLibrary.Repositories.Implementations
 {
-    class OrderRepository : IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
         private DataManager _dataManager = new DataManager();
         public void AddOrder(Order addedOrder)

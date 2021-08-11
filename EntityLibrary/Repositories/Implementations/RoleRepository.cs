@@ -10,7 +10,7 @@ using EntityLibrary.EF;
 
 namespace EntityLibrary.Repositories.Implementations
 {
-    class RoleRepository : IRoleRepository
+    public class RoleRepository : IRoleRepository
     {
         private DataManager _dataManager = new DataManager();
         public void AddRole(Role addedRole)

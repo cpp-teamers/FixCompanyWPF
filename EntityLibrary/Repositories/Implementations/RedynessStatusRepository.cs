@@ -10,7 +10,7 @@ using EntityLibrary.EF;
 
 namespace EntityLibrary.Repositories.Implementations
 {
-    class RedynessStatusRepository : IRedynessStatusRepository
+    public class RedynessStatusRepository : IRedynessStatusRepository
     {
         private DataManager _dataManager = new DataManager();
         public void AddStatus(ReadynessStatus addedStatus)

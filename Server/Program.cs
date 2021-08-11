@@ -9,44 +9,94 @@ using System.Text;
 using System.Threading.Tasks;
 using EntityLibrary.SerializableModels;
 using EntityLibrary.Repositories.Implementations;
+using EntityLibrary.Models;
 
 namespace Server
 {
     class Program
     {
-        static int port = 10000;
+        static int port = 745;
         static IPAddress addr = IPAddress.Parse("127.0.0.1");
         static IPEndPoint ep = new IPEndPoint(addr, port);
         static TcpListener listener = new TcpListener(ep);
-        //static DataManager dm = new DataManager();
         static BinaryFormatter bf = new BinaryFormatter();
+        static GeneralRepository genRep = new GeneralRepository();
         //
         static void Main(string[] args)
         {
             listener.Start(10);
-            try
+            TcpClient acceptor = null;
+
+            while (true)
             {
-                while (true)
+                try
                 {
-                    TcpClient acceptor = listener.AcceptTcpClient();
-                    NetworkStream ns = acceptor.GetStream();
-                    byte[] data = new byte[256];
-                    int receivesBytes = ns.Read(data, 0, data.Length);
-                    string requestString = System.Text.Encoding.UTF8.GetString(data, 0, receivesBytes);
-                    
-
-
-                    //---------------------------------------
-                    //---------------------------------------
-                    Console.WriteLine("\n==========-|Success|-===============\n");
-                    ns.Close();
-                    acceptor.Close();
+                    acceptor = listener.AcceptTcpClient();
+                    Task.Run(() => ConnectClient(acceptor));
+                }
+                catch (Exception err)
+                {
+                    Console.WriteLine($"Thread error: {err.Message}");
                 }
             }
-            catch (Exception err)
+        }
+
+        private static void ConnectClient(TcpClient acceptor)
+        {
+            NetworkStream ns = null;
+            try
             {
-                Console.WriteLine($"Thread error: {err.Message}");
+                ns = acceptor.GetStream();
+                byte[] data = new byte[1024];
+                int receivesBytes = ns.Read(data, 0, data.Length);
+                string requestString = Encoding.UTF8.GetString(data, 0, receivesBytes);
+
+                var request = requestString.Split(';')[0];    // Take first element of Request (etc. "Login")
+
+                switch (request) 
+                {
+                    case "Login":
+                        SAccount acc = Login(requestString.Split(';'));
+                        bf.Serialize(ns, acc);
+                        break;
+                    default:
+                        Console.WriteLine("Request doesn`t exist");
+                        break;
+                }
+
+            }
+            catch(Exception err)
+            {
+                Console.WriteLine($"Connection Error: {err.Message}");
+            }
+            finally
+            {
+                if (ns != null)
+                    ns.Close();
+                if (acceptor != null)
+                    acceptor.Close();
             }
         }
+
+        static private SAccount Login(string[] request)
+        {
+            Account account = genRep.AccRepo.GetAccountByLogin(request[1]);
+            if(account == null)
+                return null;
+            if (!account.Password.Equals(request[2]))
+                return null;
+
+            //
+            SAccount sAccount = new SAccount()
+            {
+                Id = account.Id,
+                Login = account.Login,
+                RoleId = account.RoleId
+            };
+
+            //
+            return sAccount;
+        }
+
     }
 }
