@@ -159,6 +159,22 @@
   <ItemGroup>
     <Resource Include="Images\search-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityLibrary\EntityLibrary.csproj">
+      <Project>{1cb6e185-aab8-4fa5-b3c9-d0d4dc5808db}</Project>
+      <Name>EntityLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MD5\MD5Library.csproj">
+      <Project>{0975c1b6-045d-40f4-a38e-b05002270c52}</Project>
+      <Name>MD5Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

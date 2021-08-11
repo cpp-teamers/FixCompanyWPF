@@ -31,6 +31,12 @@ namespace EntityLibrary.Repositories.Implementations
             return _dataManager.Accounts.Find(accountId);
         }
 
+        public Account GetAccountByLogin(string login)
+        {
+            IQueryable<Account> accounts = _dataManager.Accounts;
+            return accounts.FirstOrDefault(account => account.Login == login);
+        }
+
         public IEnumerable<Account> GetAccountsByRoleId(int roleId)
         {
             return _dataManager.Roles.Find(roleId).Accounts;

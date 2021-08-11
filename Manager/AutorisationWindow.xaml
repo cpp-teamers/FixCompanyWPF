@@ -34,7 +34,8 @@
                 <PasswordBox Margin="0,10" materialDesign:HintAssist.Hint="PASSWORD" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" x:Name="passwordField"/>
             </StackPanel>
         </Grid>
-        <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Background="#2a2e4d" x:Name="loginButton"/>
+        <Button Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Background="#2a2e4d" x:Name="loginButton"
+                Click="loginButton_Click"/>
         <Image Source="Images/home.png" Width="100" Height="100" VerticalAlignment="Top" Margin="30"/>
         <Button VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="0" Margin="3" Click="Button_Click" x:Name="crossButton" Width="25" Height="25">
             <Button.Background>

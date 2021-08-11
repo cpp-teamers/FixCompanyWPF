@@ -15,5 +15,6 @@ namespace EntityLibrary.Repositories.Interfaces
         void AddAccount(Account addedAccount);
         void ChangeAccount(Account changedAccount);
         void RemoveAccount(int deletedAccountId);
+        Account GetAccountByLogin(string login);
     }
 }
