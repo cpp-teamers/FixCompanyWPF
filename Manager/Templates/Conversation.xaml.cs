@@ -21,7 +21,7 @@ namespace Manager.Templates
         public Conversation()
         {
             InitializeComponent();
-            DataContext = new ConversationMessagesViewModel();
+            DataContext = new SMessageViewModel();
         }
     }
 }

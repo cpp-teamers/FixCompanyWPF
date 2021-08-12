@@ -63,19 +63,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Message.cs" />
     <Compile Include="Templates\ChatList.xaml.cs">
       <DependentUpon>ChatList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Templates\Conversation.xaml.cs">
       <DependentUpon>Conversation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ConversationMessagesViewModel.cs" />
-    <Page Include="AutorisationWindow.xaml">
+    <Page Include="View\AutorisationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -83,10 +81,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AutorisationWindow.xaml.cs">
+    <Compile Include="ViewModel\SChatListItemsViewModel.cs" />
+    <Compile Include="ViewModel\SMessageViewModel.cs" />
+    <Compile Include="View\AutorisationWindow.xaml.cs">
       <DependentUpon>AutorisationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Manager.ViewModel
 {
-    public class ConversationMessagesViewModel
+    public class SMessageViewModel
     {
         public List<ChatListItems> ChatListItems
         {
@@ -46,8 +46,6 @@ namespace Manager.ViewModel
 
         public bool IsOnline { get; set; }
 
-        public string ContactProfilePic { get; set; }
-
         public string ContactName { get; set; }
 
         public string LastMessageTime { get; set; }
@@ -60,13 +58,11 @@ namespace Manager.ViewModel
 
         public string NewMsgCount { get; set; }
     }
+
     public class ConversationMessages
     {
-
         public string MessageStatus { get; set; }
-
         public string TimeStamp { get; set; }
-
         public string Message { get; set; }
     }
 }
