@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using EntityLibrary.Models;
 
 namespace Manager.ViewModel
 {
-    public class SMessageViewModel
+    public class SMessageViewModel : INotifyPropertyChanged
     {
         public List<ChatListItems> ChatListItems
         {
@@ -27,42 +30,24 @@ namespace Manager.ViewModel
                 };
             }
         }
-        public List<ConversationMessages> Messages
+        public List<Message> Messages
         {
             get
             {
-                return new List<ConversationMessages>
+                return new List<Message>
                 {
-                    new ConversationMessages(){ Message="Hi Alex! What's Up?",MessageStatus ="Received", TimeStamp="Yesterday 14:26 PM" },
-                    new ConversationMessages() { Message="I remeber everything mate. See you later", MessageStatus="Sent", TimeStamp="Today 06:18 AM"},
-                    new ConversationMessages() { Message="See you later ", MessageStatus="Sent", TimeStamp="Today 06:18 AM"}
+                    new Message(){ Content="Hi Alex! What's Up?", HasRead=true, TimeStamp=DateTime.Now },
+                    new Message() { Content="I remeber everything mate. See you later", HasRead=true, TimeStamp=DateTime.Now},
+                    new Message() { Content="See you later ", HasRead=true, TimeStamp=DateTime.Now}
                 };
             }
         }
-    }
-    public class ChatListItems
-    {
-        public bool IsChatSelected { get; set; }
 
-        public bool IsOnline { get; set; }
 
-        public string ContactName { get; set; }
-
-        public string LastMessageTime { get; set; }
-
-        public string Availability { get; set; }
-
-        public bool IsRead { get; set; }
-
-        public string Message { get; set; }
-
-        public string NewMsgCount { get; set; }
-    }
-
-    public class ConversationMessages
-    {
-        public string MessageStatus { get; set; }
-        public string TimeStamp { get; set; }
-        public string Message { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
 }
