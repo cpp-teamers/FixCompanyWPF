@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityLibrary.Models
 {
+    [Serializable]
 	[Table("Accounts")]
     public class Account
     {
@@ -26,5 +28,7 @@ namespace EntityLibrary.Models
 		public ICollection<Order> OwnerAccountOrders { get; set; }
         public ICollection<Message> FromMessages { get; set; }
         public ICollection<Message> ToMessages { get; set; }
+
+        public Account() { }
 	}
 }
