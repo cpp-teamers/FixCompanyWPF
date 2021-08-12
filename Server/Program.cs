@@ -53,7 +53,7 @@ namespace Server
 
                 var request = requestString.Split(';')[0];    // Take first element of Request (etc. "Login")
 
-                switch (request) 
+                switch (request)
                 {
                     case "Login":
                         SAccount acc = Login(requestString.Split(';'));
@@ -64,13 +64,17 @@ namespace Server
                         byte[] sendData = Encoding.UTF8.GetBytes(res);
                         ns.Write(sendData, 0, sendData.Length);
                         break;
+                    case "CheckNewMess":
+                        var messages = GetNewMessages(requestString.Split(';'));
+                        bf.Serialize(ns, messages);
+                        break;
                     default:
                         Console.WriteLine("Request doesn`t exist");
                         break;
                 }
 
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 Console.WriteLine($"Connection Error: {err.Message}");
             }
@@ -81,6 +85,11 @@ namespace Server
                 if (acceptor != null)
                     acceptor.Close();
             }
+        }
+
+        static private List<Message> GetNewMessages(string[] request)
+        {
+            return genRep.MesRepo.GetMessagesByFromIdAndToId(Int32.Parse(request[1])).ToList();
         }
 
         static private string Mess(string[] request)

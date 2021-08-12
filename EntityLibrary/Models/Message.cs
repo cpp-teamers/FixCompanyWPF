@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityLibrary.Models
 {
+	[Serializable]
 	[Table("Messages")]
 	public class Message
 	{
@@ -31,5 +32,7 @@ namespace EntityLibrary.Models
 
 		public int ToAccountId { get; set; }
 		public virtual Account ToAccount { get; set; }
+
+		public Message() { }
 	}
 }

@@ -26,7 +26,8 @@ namespace EntityLibrary.Repositories.Implementations
 
         public IEnumerable<Message> GetMessagesByFromIdAndToId(int idAccount)
         {
-            throw new NotImplementedException();
+            IQueryable<Message> messages = _dataManager.Messages;
+            return messages.Where(m => m.FromAccountId == idAccount || m.ToAccountId == idAccount).OrderBy(m => m.TimeStamp);
         }
     }
 }
