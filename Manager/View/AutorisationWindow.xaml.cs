@@ -48,7 +48,7 @@ namespace Manager.View
             // CAN be NULL
             SAccount result = await SendAsync($"Login;{login};{hashPassword}");
 
-            if (result == null)
+            if (result.Id == -1)
             {
                 MessageBox.Show($"Логин или пароль неверный!",
                     "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -57,7 +57,7 @@ namespace Manager.View
             {
                 MainWindow window = new MainWindow();
                 window.Show();
-                this.IsEnabled = false;
+                this.Close();
             }
         }
 

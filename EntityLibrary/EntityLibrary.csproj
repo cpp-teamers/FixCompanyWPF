@@ -74,9 +74,14 @@
     <Compile Include="Migrations\202108100739358_orders table.Designer.cs">
       <DependentUpon>202108100739358_orders table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108120929204_Message added.cs" />
+    <Compile Include="Migrations\202108120929204_Message added.Designer.cs">
+      <DependentUpon>202108120929204_Message added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="EF\DataManager.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ReadynessStatus.cs" />
     <Compile Include="Models\Role.cs" />
@@ -84,11 +89,13 @@
     <Compile Include="Models\SolvedProblemType.cs" />
     <Compile Include="Repositories\Implementations\AccountRepository.cs" />
     <Compile Include="Repositories\Implementations\GeneralRepository.cs" />
+    <Compile Include="Repositories\Implementations\MessageRepository.cs" />
     <Compile Include="Repositories\Implementations\OrderRepository.cs" />
     <Compile Include="Repositories\Implementations\RedynessStatusRepository.cs" />
     <Compile Include="Repositories\Implementations\RoleRepository.cs" />
     <Compile Include="Repositories\Implementations\SolvedProblemTypeRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAccountRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IMessageInterface.cs" />
     <Compile Include="Repositories\Interfaces\IOrderRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRedynessStatusRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRoleRepository.cs" />
@@ -117,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108100739358_orders table.resx">
       <DependentUpon>202108100739358_orders table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108120929204_Message added.resx">
+      <DependentUpon>202108120929204_Message added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

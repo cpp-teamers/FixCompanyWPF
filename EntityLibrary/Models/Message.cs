@@ -25,5 +25,11 @@ namespace EntityLibrary.Models
 		[Required]
 		[StringLength(250)]
 		public string Content { get; set; }
+
+		public int FromAccountId { get; set; }
+		public virtual Account FromAccount { get; set; }
+
+		public int ToAccountId { get; set; }
+		public virtual Account ToAccount { get; set; }
 	}
 }

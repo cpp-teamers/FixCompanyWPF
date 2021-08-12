@@ -15,6 +15,8 @@ namespace EntityLibrary.EF
 		public virtual DbSet<Models.SolvedProblemType> SolvedProblemTypes { get; set; }
 		public virtual DbSet<Models.Order> Orders { get; set; }
 
+		public virtual DbSet<Models.Message> Messages { get; set; }
+
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Models.Order>()
@@ -27,6 +29,18 @@ namespace EntityLibrary.EF
 				.HasRequired(o => o.EmployeeAccount)
 				.WithMany(a => a.EmployeeAccountOrders)
 				.HasForeignKey(m => m.EmployeeAccountId)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<Models.Message>()
+				.HasRequired(m => m.FromAccount)
+				.WithMany(a => a.FromMessages)
+				.HasForeignKey(m => m.FromAccountId)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<Models.Message>()
+				.HasRequired(m => m.ToAccount)
+				.WithMany(a => a.ToMessages)
+				.HasForeignKey(m => m.ToAccountId)
 				.WillCascadeOnDelete(false);
 		}
 
