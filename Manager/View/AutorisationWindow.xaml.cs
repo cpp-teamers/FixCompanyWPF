@@ -17,7 +17,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Manager
+namespace Manager.View
 {
     public partial class AutorisationWindow : Window
     {

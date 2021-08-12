@@ -16,15 +16,12 @@ using Manager.ViewModel;
 
 namespace Manager.Templates
 {
-    /// <summary>
-    /// Interaction logic for ChatList.xaml
-    /// </summary>
     public partial class ChatList : UserControl
     {
         public ChatList()
         {
             InitializeComponent();
-            DataContext = new ConversationMessagesViewModel();
+            DataContext = new SMessageViewModel();
         }
     }
 }
