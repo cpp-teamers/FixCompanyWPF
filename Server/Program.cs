@@ -59,6 +59,9 @@ namespace Server
                         SAccount acc = Login(requestString.Split(';'));
                         bf.Serialize(ns, acc);
                         break;
+                    case "Mess":
+                        Mess(requestString.Split(';'));
+                        break;
                     default:
                         Console.WriteLine("Request doesn`t exist");
                         break;
@@ -76,6 +79,11 @@ namespace Server
                 if (acceptor != null)
                     acceptor.Close();
             }
+        }
+
+        static private void Mess(string[] request)
+        {
+
         }
 
         static private SAccount Login(string[] request)
