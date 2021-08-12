@@ -18,9 +18,10 @@ namespace EntityLibrary.Repositories.Implementations
         {
             _dataManager = dataManager;
         }
-        public void AddMessage(Message message)
+        public void AddMessage(Message addedMessage)
         {
-            
+            _dataManager.Messages.Add(addedMessage);
+            _dataManager.SaveChanges();
         }
 
         public IEnumerable<Message> GetMessagesByFromIdAndToId(int idAccount)

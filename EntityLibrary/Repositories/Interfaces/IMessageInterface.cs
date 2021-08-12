@@ -9,7 +9,7 @@ namespace EntityLibrary.Repositories.Interfaces
 {
     interface IMessageInterface
     {
-        void AddMessage(Message message);
+        void AddMessage(Message addesMessage);
         IEnumerable<Message> GetMessagesByFromIdAndToId(int idAccount);
     }
 }
