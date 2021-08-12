@@ -21,7 +21,7 @@ namespace Manager.Templates
         public ChatList()
         {
             InitializeComponent();
-            DataContext = new SMessageViewModel();
+            DataContext = new SChatListItemsViewModel();
         }
     }
 }

@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Templates\ChatList.xaml.cs">
       <DependentUpon>ChatList.xaml</DependentUpon>
     </Compile>
@@ -82,6 +83,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\ChatViewModel.cs" />
     <Compile Include="ViewModel\SChatListItemsViewModel.cs" />
     <Compile Include="ViewModel\SMessageViewModel.cs" />
     <Compile Include="View\AutorisationWindow.xaml.cs">

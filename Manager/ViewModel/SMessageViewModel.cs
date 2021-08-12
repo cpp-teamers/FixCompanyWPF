@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -7,43 +8,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using EntityLibrary.Models;
+using Manager.Commands;
 
 namespace Manager.ViewModel
 {
     public class SMessageViewModel : INotifyPropertyChanged
     {
-        public List<ChatListItems> ChatListItems
+        public ObservableCollection<Message> _messages;
+        public ObservableCollection<Message> Messages
         {
-            get
+            get { return _messages; }
+            set
             {
-                return new List<ChatListItems>
+                if (value != _messages)
                 {
-                    new ChatListItems() { ContactName = "User 1", LastMessageTime = "10:30 PM", Availability = "Online", Message="Check out new video uploaded just now!", NewMsgCount="5",  IsOnline=true},
-                    new ChatListItems() { ContactName = "User 2", LastMessageTime = "14:45 pm", Availability = "Offline", Message = "Its seems logical that the strategy of providing!"},
-                    new ChatListItems() { ContactName = "User 3", LastMessageTime = "06:18 am", Availability = "Offline", Message = "I remember everything mate. See you later", IsRead = false},// IsChatSelected=true,
-                    new ChatListItems() { ContactName = "User 4", LastMessageTime = "15 Sep 2019", Availability = "Online", Message = "I will miss you, too, my dear!", IsRead = false, IsOnline=true},
-                    new ChatListItems() { ContactName = "User 5", LastMessageTime = "15 Sep 2019", Availability = "Online", Message = "I will miss you, too, my dear!", IsRead = false, IsOnline=true},
-                    new ChatListItems() { ContactName = "User 6", LastMessageTime = "15 Sep 2019", Availability = "Online", Message = "I will miss you, too, my dear!", IsRead = false, IsOnline=true},
-                    new ChatListItems() { ContactName = "User 7", LastMessageTime = "15 Sep 2019", Availability = "Online", Message = "I will miss you, too, my dear!", IsRead = false, IsOnline=true},
-                    new ChatListItems() { ContactName = "User 8", LastMessageTime = "15 Sep 2019", Availability = "Online", Message = "I will miss you, too, my dear!", IsRead = false, IsOnline=true},
-                    new ChatListItems() { ContactName = "User 9", LastMessageTime = "15 Sep 2019", Availability = "Online", Message = "I will miss you, too, my dear!", IsRead = false, IsOnline=true},
-                };
+                    _messages = value;
+                    OnPropertyChanged("Messages");
+                }
             }
         }
-        public List<Message> Messages
+        public SMessageViewModel()
         {
-            get
-            {
-                return new List<Message>
-                {
-                    new Message(){ Content="Hi Alex! What's Up?", HasRead=true, TimeStamp=DateTime.Now },
-                    new Message() { Content="I remeber everything mate. See you later", HasRead=true, TimeStamp=DateTime.Now},
-                    new Message() { Content="See you later ", HasRead=true, TimeStamp=DateTime.Now}
-                };
-            }
+            _messages = new ObservableCollection<Message>();
+            LoadMessages();
+        }
+        private void LoadMessages()
+        {
+            Messages.Add(new Message() { Content = "Hi, how are you doing?", HasRead = true, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "I'm fine. How about yourself?", HasRead = false, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "I'm pretty good. Thanks for asking.", HasRead = true, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "No problem. So how have you been?", HasRead = false, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "I've been great. What about you?", HasRead = true, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "I've been good. I'm in school right now.", HasRead = false, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "What school do you go to?", HasRead = true, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "I go to PCC.", HasRead = false, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "Do you like it there?", HasRead = true, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "It's okay. It's a really big campus.", HasRead = false, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "Good luck with school.", HasRead = true, TimeStamp = DateTime.Now });
+            Messages.Add(new Message() { Content = "Thank you very much.", HasRead = false, TimeStamp = DateTime.Now });
+
+
+            //OnPropertyChanged("Messages");
         }
 
-
+        // -------------------
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

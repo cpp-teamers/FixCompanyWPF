@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using EntityLibrary.SerializableModels;
 using EntityLibrary.Repositories.Implementations;
 using EntityLibrary.Models;
 
@@ -23,6 +24,7 @@ namespace Server
         //
         static void Main(string[] args)
         {
+            Console.WriteLine($"{DateTime.Now} :: Server Running");
             listener.Start(10);
             TcpClient acceptor = null;
 
@@ -35,7 +37,7 @@ namespace Server
                 }
                 catch (Exception err)
                 {
-                    Console.WriteLine($"Thread error: {err.Message}");
+                    Console.WriteLine($"{DateTime.Now} :: Thread error: {err.Message}");
                 }
             }
         }
@@ -49,13 +51,13 @@ namespace Server
                 byte[] data = new byte[1024];
                 int receivesBytes = ns.Read(data, 0, data.Length);
                 string requestString = Encoding.UTF8.GetString(data, 0, receivesBytes);
-
+                Console.WriteLine($"{DateTime.Now} :: Get request:{requestString}");
                 var request = requestString.Split(';')[0];    // Take first element of Request (etc. "Login")
 
                 switch (request)
                 {
                     case "Login":
-                        Account acc = Login(requestString.Split(';'));
+                        SAccount acc = Login(requestString.Split(';'));
                         bf.Serialize(ns, acc);
                         break;
                     case "Mess":
@@ -104,19 +106,29 @@ namespace Server
             return "Received";
         }
 
-        static private Account Login(string[] request)
+        static private SAccount Login(string[] request)
         {
             Account account = genRep.AccRepo.GetAccountByLogin(request[1]);
             if(account == null)
             {
-                return new Account { Id = -1};
+                Console.WriteLine($"{DateTime.Now} :: Incorrect Login");
+                return new SAccount { Id = -1};
+                
             }
             if (!account.Password.Equals(request[2]))
             {
-                return new Account { Id = -1 };
+                Console.WriteLine($"{DateTime.Now} :: Inccorect Password");
+                return new SAccount { Id = -1 };
+                
             }
             //
-            return account ;
+            Console.WriteLine($"{DateTime.Now} :: Successfully autorisation");
+            return new SAccount()
+            {
+                Id = account.Id,
+                Login = account.Login,
+                RoleId = account.RoleId
+            }; ;
         }
 
     }

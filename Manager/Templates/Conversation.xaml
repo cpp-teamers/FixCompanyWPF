@@ -15,7 +15,7 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding MessageStatus}" Value="Sent">
+                <DataTrigger Binding="{Binding HasRead}" Value="True">
                     <Setter Property="Foreground" Value="White"/>
                 </DataTrigger>
             </Style.Triggers>
@@ -38,7 +38,7 @@
                                     <Style TargetType="{x:Type Grid}">
                                         <Setter Property="HorizontalAlignment" Value="Right"/>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding MessageStatus}" Value="Received">
+                                            <DataTrigger Binding="{Binding HasRead}" Value="False">
                                                 <Setter Property="HorizontalAlignment" Value="Left"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -48,37 +48,17 @@
                                         VerticalAlignment="Top" Margin="0,0,0,20">
                                     <Border.Style>
                                         <Style TargetType="{x:Type Border}">
-                                            <Setter Property="Background" Value="White"/>
+                                            <Setter Property="Background" Value="LightGray"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding MessageStatus}" Value="Sent">
+                                                <DataTrigger Binding="{Binding HasRead}" Value="True">
                                                     <Setter Property="Background" Value="#F54A4A"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Border.Style>
                                     <Grid>
-                                        <Path Data="M13,0.1875C5.925781,0.1875 0.1875,5.253906 0.1875,11.5 0.1875,14.675781 1.675781,17.539063 4.0625,19.59375 3.542969,22.601563 0.175781,23.828125 0.40625,24.65625 3.414063,25.902344 9.378906,23.011719 10.28125,22.5625 11.15625,22.730469 12.070313,22.8125 13,22.8125 20.074219,22.8125 25.8125,17.746094 25.8125,11.5 25.8125,5.253906 20.074219,0.1875 13,0.1875z" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" Height="54.75" MinHeight="50" Width="58" MinWidth="58" Stretch="Uniform">
-                                            <Path.Style>
-                                                <Style TargetType="{x:Type Path}">
-                                                    <Setter Property="Fill" Value="White"/>
-                                                    <Setter Property="HorizontalAlignment" Value="Left"/>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding MessageStatus}" Value="Sent">
-                                                            <Setter Property="Fill" Value="#F54A4A"/>
-                                                            <Setter Property="HorizontalAlignment" Value="Right"/>
-
-                                                            <Setter Property="RenderTransform">
-                                                                <Setter.Value>
-                                                                    <ScaleTransform ScaleX="-1"/>
-                                                                </Setter.Value>
-                                                            </Setter>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Path.Style>
-                                        </Path>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <TextBlock Text="{Binding Message}" Style="{StaticResource MessageStyle}"/>
+                                            <TextBlock Text="{Binding Content}" Style="{StaticResource MessageStyle}"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -91,7 +71,7 @@
                                             <Setter Property="Foreground" Value="#B7B5B8"/>
                                             <Setter Property="Margin" Value="20,0,20,0"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding MessageStatus}" Value="Sent">
+                                                <DataTrigger Binding="{Binding HasRead}" Value="True">
                                                     <Setter Property="HorizontalAlignment" Value="Right"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -106,5 +86,6 @@
         </Style>
         <Style x:Key="defList" TargetType="ListBox"></Style>
     </UserControl.Resources>
-    <ListBox Background="Transparent" BorderThickness="0,.05,0,0" ItemsSource="{Binding Messages}" Style="{StaticResource ResourceKey=defList}"/>
+    <ListBox Background="Transparent" BorderThickness="0,.05,0,0" ItemsSource="{Binding Messages, UpdateSourceTrigger=PropertyChanged}"
+             Style="{StaticResource ResourceKey=defList}"/>
 </UserControl>
