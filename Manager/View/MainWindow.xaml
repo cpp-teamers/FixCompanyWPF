@@ -12,7 +12,8 @@
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None"
         MouseLeftButtonDown="Window_MouseLeftButtonDown" 
-        Background="Transparent">
+        Background="Transparent"
+        Icon="../Images/Icon.ico">
     <Border
         Background="White"
         CornerRadius="30">
