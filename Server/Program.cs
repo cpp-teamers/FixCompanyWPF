@@ -82,20 +82,20 @@ namespace Server
         {
             Account account = genRep.AccRepo.GetAccountByLogin(request[1]);
             if(account == null)
-                return null;
+            {
+                return new SAccount { Id = -1};
+            }
             if (!account.Password.Equals(request[2]))
-                return null;
-
+            {
+                return new SAccount { Id = -1 };
+            }
             //
-            SAccount sAccount = new SAccount()
+            return new SAccount()
             {
                 Id = account.Id,
                 Login = account.Login,
                 RoleId = account.RoleId
-            };
-
-            //
-            return sAccount;
+            }; ;
         }
 
     }
