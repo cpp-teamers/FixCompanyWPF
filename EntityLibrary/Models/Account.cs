@@ -24,5 +24,7 @@ namespace EntityLibrary.Models
 
 		public ICollection<Order> EmployeeAccountOrders { get; set; }
 		public ICollection<Order> OwnerAccountOrders { get; set; }
+        public ICollection<Message> FromMessages { get; set; }
+        public ICollection<Message> ToMessages { get; set; }
 	}
 }

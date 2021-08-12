@@ -10,10 +10,12 @@ namespace EntityLibrary.Repositories.Implementations
     public class GeneralRepository
     {
         private DataManager _dataManager = new DataManager();
-        public AccountRepository AccRepo { get; set; }
+        public AccountRepository AccRepo { get; private set; }
+        public MessageRepository MesRepo { get; private set; }
         public GeneralRepository()
         {
             AccRepo = new AccountRepository(_dataManager);
+            MesRepo = new MessageRepository(_dataManager);
         }
     }
 }

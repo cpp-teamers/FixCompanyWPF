@@ -59,6 +59,11 @@ namespace Server
                         SAccount acc = Login(requestString.Split(';'));
                         bf.Serialize(ns, acc);
                         break;
+                    case "Mess":
+                        var res = Mess(requestString.Split(';'));
+                        byte[] sendData = Encoding.UTF8.GetBytes(res);
+                        ns.Write(sendData, 0, sendData.Length);
+                        break;
                     default:
                         Console.WriteLine("Request doesn`t exist");
                         break;
@@ -76,6 +81,19 @@ namespace Server
                 if (acceptor != null)
                     acceptor.Close();
             }
+        }
+
+        static private string Mess(string[] request)
+        {
+            genRep.MesRepo.AddMessage(new Message()
+            {
+                Id = 0,
+                TimeStamp = DateTime.Parse(request[1]),
+                Content = request[2],
+                FromAccountId = Int32.Parse(request[3]),
+                ToAccountId = Int32.Parse(request[4])
+            });
+            return "Received";
         }
 
         static private SAccount Login(string[] request)
