@@ -34,11 +34,11 @@
             <!--Mouse Triggers to change background color and show/hide indicator like...-->
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}" Value="True">
-                    <Setter Property="Background" Value="#F54A4A"/>
+                    <Setter Property="Background" Value="#F91A8A"/>
                     <Setter Property="Visibility" Value="Visible"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}" Value="True">
-                    <Setter Property="Background" Value="#F54A4A"/>
+                    <Setter Property="Background" Value="#F91A8A"/>
                     <Setter Property="Visibility" Value="Visible"/>
                 </DataTrigger>
             </Style.Triggers>
@@ -80,7 +80,6 @@
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
 
-                                            <!--#region Contact Name & Availability Status-->
                                             <Grid Grid.Column="1" Margin="13,0,0,0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
@@ -113,7 +112,6 @@
                                         </Grid>
                                         
                                         
-                                        <!--now what we are going to do is take 3 columns for our replied Icon, last message sent & if we received the messages from contact that is... that count (2) as in picture..-->
                                         <Grid Margin="28,0,28,0" Width="400">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
@@ -123,7 +121,6 @@
                                             <!--Message-->
                                             <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="{Binding Message}" FontSize="14" VerticalAlignment="Center">
                                                 <TextBlock.Style>
-                                                    <!--Since the text color is supposed to change on move over and item selected event-->
                                                     <Style TargetType="{x:Type TextBlock}">
                                                         <Style.Triggers>
                                                             <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}" Value="True">
@@ -150,10 +147,8 @@
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Grid.Style>
-                                                
                                                 <!--Outer Circle-->
-                                                <Ellipse Fill="#F54A4A" Width="25" Height="25"/>
-                                                
+                                                <Ellipse Fill="#F41A3A" Width="25" Height="25"/>
                                                 <!--Count Text Inside-->
                                                 <TextBlock Text="{Binding NewMsgCount}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
                                             </Grid>
@@ -176,5 +171,5 @@
         </Style>
     </UserControl.Resources>
 
-    <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems}"/>
+    <ListBox Style="{StaticResource ChatListBoxStyle}" ItemsSource="{Binding ChatListItems, UpdateSourceTrigger=PropertyChanged }"/>
 </UserControl>

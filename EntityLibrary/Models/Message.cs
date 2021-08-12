@@ -33,6 +33,8 @@ namespace EntityLibrary.Models
 		public int ToAccountId { get; set; }
 		public virtual Account ToAccount { get; set; }
 
-		public Message() { }
+		public Message() 
+		{
+		}
 	}
 }

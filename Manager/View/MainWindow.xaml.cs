@@ -21,7 +21,7 @@ namespace Manager.View
     public partial class MainWindow : Window
     {
         const int port = 745;
-        public MainWindow()
+      public MainWindow()
         {
             InitializeComponent();
         }
