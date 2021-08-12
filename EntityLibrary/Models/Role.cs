@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityLibrary.Models
 {
+    [Serializable]
 	[Table("Roles")]
     public class Role
     {
@@ -16,5 +18,6 @@ namespace EntityLibrary.Models
 
         //
         public virtual IEnumerable<Account> Accounts { get; set; }
+        public Role() { }
     }
 }

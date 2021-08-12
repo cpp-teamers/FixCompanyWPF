@@ -100,7 +100,6 @@
     <Compile Include="Repositories\Interfaces\IRedynessStatusRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRoleRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISolvedProblemTypeRepository.cs" />
-    <Compile Include="SerializableModels\SAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
