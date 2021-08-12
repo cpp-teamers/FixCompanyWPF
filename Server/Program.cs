@@ -7,7 +7,6 @@ using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
-using EntityLibrary.SerializableModels;
 using EntityLibrary.Repositories.Implementations;
 using EntityLibrary.Models;
 
@@ -56,7 +55,7 @@ namespace Server
                 switch (request)
                 {
                     case "Login":
-                        SAccount acc = Login(requestString.Split(';'));
+                        Account acc = Login(requestString.Split(';'));
                         bf.Serialize(ns, acc);
                         break;
                     case "Mess":
@@ -105,24 +104,19 @@ namespace Server
             return "Received";
         }
 
-        static private SAccount Login(string[] request)
+        static private Account Login(string[] request)
         {
             Account account = genRep.AccRepo.GetAccountByLogin(request[1]);
             if(account == null)
             {
-                return new SAccount { Id = -1};
+                return new Account { Id = -1};
             }
             if (!account.Password.Equals(request[2]))
             {
-                return new SAccount { Id = -1 };
+                return new Account { Id = -1 };
             }
             //
-            return new SAccount()
-            {
-                Id = account.Id,
-                Login = account.Login,
-                RoleId = account.RoleId
-            }; ;
+            return account ;
         }
 
     }

@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using EntityLibrary.SerializableModels;
+using EntityLibrary.Models;
 using MD5Library;
 using System.Net.Sockets;
 using System.Net;
@@ -46,7 +46,7 @@ namespace Manager.View
             var hashPassword = Hasher.GetHash(password);
 
             // CAN be NULL
-            SAccount result = await SendAsync($"Login;{login};{hashPassword}");
+            Account result = await SendAsync($"Login;{login};{hashPassword}");
 
             if (result.Id == -1)
             {
@@ -61,12 +61,12 @@ namespace Manager.View
             }
         }
 
-        private async Task<SAccount> SendAsync(string sendMessage)
+        private async Task<Account> SendAsync(string sendMessage)
         {
             return await Task.Run(() => Send(sendMessage));
         }
 
-        private SAccount Send(string sendMessage)
+        private Account Send(string sendMessage)
         {
             int port = 745;
             IPAddress ip = IPAddress.Parse("127.0.0.1");
@@ -74,7 +74,7 @@ namespace Manager.View
             TcpClient client = null;
             NetworkStream stream = null;
             BinaryFormatter bf = null;
-            SAccount account = null;
+            Account account = null;
 
             try
             {
@@ -85,7 +85,7 @@ namespace Manager.View
                 byte[] data = Encoding.UTF8.GetBytes(sendMessage);
                 stream.Write(data, 0, data.Length);
 
-                account = (SAccount)bf.Deserialize(stream);
+                account = (Account)bf.Deserialize(stream);
             }
             catch (Exception err)
             {

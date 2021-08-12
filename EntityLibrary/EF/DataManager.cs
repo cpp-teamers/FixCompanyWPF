@@ -7,7 +7,9 @@ namespace EntityLibrary.EF
 	public class DataManager : DbContext
 	{
 		
-		public DataManager(): base("name=DataManager") { }
+		public DataManager(): base("name=DataManager") {
+			base.Configuration.ProxyCreationEnabled = false;
+		}
 
 		public virtual DbSet<Models.Role> Roles { get; set; }
 		public virtual DbSet<Models.Account> Accounts { get; set; }
